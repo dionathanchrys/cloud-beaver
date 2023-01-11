@@ -1,0 +1,64 @@
+{
+	"folders": {
+		"My DBs": {}
+	},
+	"connections": {
+		"DB-connection-01": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "DB-connection-01",
+			"description": "Postgre connection",
+			"save-password": false,
+			"show-system-objects": true,
+			"read-only": false,
+			"folder": "My DBs",
+			"configuration": {
+				"user": "my-db-user",
+				"host": "postgres",
+				"port": "5432",
+				"database": "my-postgre-db",
+				"url": "jdbc:postgresql://postgres:5432/my-postgre-db",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "true"
+				},
+				"auth-model": "native"
+			}
+		},
+		"DB-connection-02": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "DB-connection-02",
+			"description": "",
+			"save-password": false,
+			"show-system-objects": true,
+			"read-only": false,
+			"folder": "My DBs",
+			"configuration": {
+				"host": "pg-svc",
+				"port": "5432",
+				"database": "vamo",
+				"url": "jdbc:postgresql://pg-svc:5432/vamo",
+				"type": "dev",
+				"properties": {
+					"readOnlyMode": "ignore"
+				},
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false"
+				},
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "0,0,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}

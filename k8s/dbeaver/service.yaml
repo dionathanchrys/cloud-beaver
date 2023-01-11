@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dbeaver
+  namespace: dbeaver-test
+spec:
+  ports:
+    - port: 8978
+      targetPort: 8978
+      protocol: TCP
+  selector:
+    app: dbeaver-app
