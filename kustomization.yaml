@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: dbeaver-test
+namespace: cloud-beaver-test
 
 resources:
   - namespace.yaml
@@ -9,9 +9,10 @@ resources:
   - dbeaver/service.yaml
   - postgres/deployment.yaml
   - postgres/service.yaml
+  - mysql/deployment.yaml
+  - mysql/service.yaml
 
 configMapGenerator:
-
 #DBEAVER
   - name: dbeaver-product-configmap
     files:
@@ -31,6 +32,13 @@ configMapGenerator:
     - POSTGRES_USER=my-db-user
     - POSTGRES_PASSWORD=Password123
     - POSTGRES_DB=my-postgre-db
+#MYSQL
+  - name: mysql-configmap
+    literals:
+    - MYSQL_ROOT_PASSWORD=PasswordROOT
+    - MYSQL_USER=my-db-user
+    - MYSQL_PASSWORD=Password123
+    - MYSQL_DATABASE=my-mysql-db
 
 secretGenerator:
 #DBEAVER

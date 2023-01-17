@@ -3,10 +3,10 @@
 		"My DBs": {}
 	},
 	"connections": {
-		"DB-connection-01": {
+		"DB-example-01": {
 			"provider": "postgresql",
 			"driver": "postgres-jdbc",
-			"name": "DB-connection-01",
+			"name": "DB-example-01",
 			"description": "Postgre connection",
 			"save-password": false,
 			"show-system-objects": true,
@@ -25,23 +25,24 @@
 				"auth-model": "native"
 			}
 		},
-		"DB-connection-02": {
-			"provider": "postgresql",
-			"driver": "postgres-jdbc",
-			"name": "DB-connection-02",
+		"DB-example-02": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "DB-example-02",
 			"description": "",
 			"save-password": false,
 			"show-system-objects": true,
 			"read-only": false,
 			"folder": "My DBs",
 			"configuration": {
-				"host": "pg-svc",
-				"port": "5432",
-				"database": "vamo",
-				"url": "jdbc:postgresql://pg-svc:5432/vamo",
+				"user": "my-db-user",
+				"host": "mysql",
+				"port": "3306",
+				"database": "my-mysql-db",
+				"url": "jdbc:mysql://mysql:3306/my-mysql-db",
 				"type": "dev",
 				"properties": {
-					"readOnlyMode": "ignore"
+					"allowPublicKeyRetrieval": "true"
 				},
 				"provider-properties": {
 					"@dbeaver-show-non-default-db@": "false"

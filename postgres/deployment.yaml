@@ -2,7 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: postgres
-  namespace: dbeaver-test
+  namespace: cloud-beaver-test
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -53,5 +53,5 @@ spec:
       volumes:
         - name: database-postgres
           hostPath:
-            path: /home/minikube-volumes/postgres
+            path: /home/docker/volumes/postgres
             type: DirectoryOrCreate

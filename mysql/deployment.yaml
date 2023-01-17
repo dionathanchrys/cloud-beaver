@@ -1,0 +1,57 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mysql
+  namespace: cloud-beaver-test
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: mysql-db
+  template:
+    metadata:
+      labels:
+        app: mysql-db
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:latest
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 256m
+              memory: 1024Mi
+            limits:
+              cpu: 500m
+              memory: 1024Mi
+          ports:
+            - name: db
+              containerPort: 3306
+          envFrom:
+            - configMapRef:
+                name: mysql-configmap
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3306
+              scheme: HTTP
+            initialDelaySeconds: 300
+            timeoutSeconds: 10
+            periodSeconds: 300
+            successThreshold: 1
+            failureThreshold: 5
+          volumeMounts:
+            - name: database-mysql
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: database-mysql
+          hostPath:
+            path: /home/docker/volumes/mysql
+            type: DirectoryOrCreate
